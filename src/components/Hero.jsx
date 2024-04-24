@@ -104,7 +104,7 @@ export default function Hero() {
           </h2>
 
           <p className="lg:mt-20 lg:pl-8 pl-2 w-full lg:w-[75%] border-l-2 text-xs md:text-base text-justify border-l-green-500">
-          Hi! I&apos;m Utkarsh Tiwari, a Computer Science Engineering student with a versatile tech background in Web Development, DevOps, and data science. My expertise includes Next JS, Firebase, React JS, and C++.
+          Hi! I&apos;m Utkarsh Tiwari, a Computer Science Engineering student with a versatile tech background in Web Development, DevOps, and data science. My expertise includes Next JS, Python, React JS, and C++.
           </p>
         </motion.div>
 
