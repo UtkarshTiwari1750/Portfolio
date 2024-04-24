@@ -65,7 +65,7 @@ const ContactUs = () => {
         <div className="lg:py-7 py-2 flex flex-col lg:flex-row gap-y-7 gap-x-7 justify-between items-center px-3">
           {/* Left */}
           <div className="flex flex-col lg:w-[40%] lg:gap-y-5 gap-y-2">
-            <h3 className="uppercase text-xl font-semibold">Don't be Shy!</h3>
+            <h3 className="uppercase text-xl font-semibold">Don&apos;t be Shy!</h3>
             <p className="text-justify">
               Lorem ipsum dolor, sit amet consectetur adipisicing elit. At nemo,
               repellat praesentium natus ab a accusantium minus qui, modi

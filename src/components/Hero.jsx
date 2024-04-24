@@ -99,8 +99,8 @@ export default function Hero() {
 
           </h3>
 
-          <h2 className={`${poppins.className} md:text-5xl text-2xl `}>
-            Hi I'm Utkarsh 👋
+          <h2 className={`${poppins.className} md:text-5xl text-2xl`}>
+            Hi I&apos;m Utkarsh 👋
           </h2>
 
           <p className="lg:mt-20 lg:pl-8 pl-2 w-full lg:w-[75%] border-l-2 text-xs md:text-base text-justify border-l-green-500">
