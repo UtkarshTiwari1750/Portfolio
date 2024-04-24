@@ -41,7 +41,7 @@ export default function About() {
                             About Me
                         </h2>
                         <p className="text-slate-500">
-                            I like creating a cool design Project
+                            I like creating a Innovative Project
                          </p>
                     </div>
 
@@ -90,7 +90,7 @@ export default function About() {
                 {/* Right */}
                 <div className="lg:w-[50%] w-full pl-4 pr-10 lg:pl-0 lg:pr-0 text-justify flex flex-col lg:items-start gap-y-4 mt-5 lg:mt-0">
                     <p className="text-justify text-slate-500">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat, eum! Itaque cupiditate quo porro laudantium cum distinctio non, quos quae iure animi rerum inventore, doloremque officia placeat? Illum, optio alias!
+                        Hi! I'm Utkarsh Tiwari, a Computer Science Engineering student with a versatile tech background in Web Development, DevOps, and data science. My expertise includes Next JS, Firebase, React JS, and C++.
                     </p>
 
                     <div className="grid grid-cols-2 gap-y-5 gap-x-28 p-3 relative place-items-center pl-8 w-">
