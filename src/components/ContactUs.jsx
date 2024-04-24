@@ -67,7 +67,7 @@ const ContactUs = () => {
           <div className="flex flex-col lg:w-[40%] lg:gap-y-5 gap-y-2">
             <h3 className="uppercase text-xl font-semibold">Don&apos;t be Shy!</h3>
             <p className="text-justify">
-              Need to discuss a project or just want to chat? Don't hesitate to get in touch!
+              Need to discuss a project or just want to chat? Don&apos;t hesitate to get in touch!
             </p>
 
             <ul className="flex flex-col items-start justify-center gap-y-3">
