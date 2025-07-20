@@ -30,7 +30,7 @@ export default function Home() {
 
           <Hero />
           <WorkExperience />
-          <About />
+          {/* <About /> */}
           <Skills />
           <Projects />
           <ContactUs />
