@@ -22,7 +22,7 @@ const WorkExperience = () => {
             </span>
           </h2>
           <p className="text-gray-400 text-lg md:text-xl max-w-2xl ">
-            I switch a lot of companies. It's mostly about the culture and
+            I switch a lot of companies. It&apos;s mostly about the culture and
             growth opportunities.
           </p>
         </motion.div>
