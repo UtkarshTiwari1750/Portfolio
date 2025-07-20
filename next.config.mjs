@@ -9,6 +9,13 @@ const nextConfig = {
         filename: "static/[hash][ext]",
       },
     });
+
+    config.module.rules.push({
+      test: /\.svg$/i,
+      issuer: /\.[jt]sx?$/,
+      use: ["@svgr/webpack"],
+    });
+
     return config;
   },
   productionBrowserSourceMaps: false,
