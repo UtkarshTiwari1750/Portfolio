@@ -78,7 +78,7 @@ const WorkExperience = () => {
   ];
 
   return (
-    <div className="bg-black text-white min-h-screen py-16 px-4 lg:px-8">
+    <div id="Experience" className="bg-black text-white min-h-screen py-16 px-4 lg:px-8">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <motion.div
