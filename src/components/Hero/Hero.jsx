@@ -115,7 +115,7 @@ const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.2, duration: 0.6 }}
           >
-            <Link href="#Work" className="inline-block">
+            <Link href="#Experience" className="inline-block">
               <button className="group relative px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-full overflow-hidden transition-all duration-300 hover:from-blue-500 hover:to-purple-500 hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/25">
                 <span className="relative z-10 flex items-center gap-2">
                   View My Work
