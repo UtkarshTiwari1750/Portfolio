@@ -1,178 +1,266 @@
-"use client";
-import { AboutInfo } from "@/data/about-info";
-import { FollowLinks } from "@/data/follow-links";
-import "rsuite/dist/rsuite-no-reset.min.css";
-import { Progress } from "rsuite";
-import * as Icons from "react-icons/fa";
-import { PiDownloadSimpleBold } from "react-icons/pi";
-import { motion, useInView } from "framer-motion";
-import { useEffect, useRef } from "react";
-import Resume from "../data/Resume.pdf";
-import { useDispatch } from "react-redux";
-import { setCurrSection } from "@/slices/navSlice";
+import React, { useRef, useState } from 'react';
+import { motion, useInView } from 'framer-motion';
+import { Download, Github, Linkedin, Twitter, Mail, User, Calendar, MapPin, Phone, GraduationCap, Code } from 'lucide-react';
 
-export default function About() {
+const About = () => {
   const ref = useRef();
-  const dispatch = useDispatch();
   const isInView = useInView(ref, { amount: 0.25 });
-  useEffect(() => {
-    if (isInView) {
-      dispatch(setCurrSection("About"));
-    }
-  }, [isInView, dispatch]);
+  const [hoveredSkill, setHoveredSkill] = useState(null);
+  
+  // Mock data based on resume
+  const AboutInfo = [
+    { name: "Name", value: "Utkarsh Tiwari", icon: User },
+    { name: "Age", value: "22 Years", icon: Calendar },
+    { name: "Location", value: "Mumbai, India", icon: MapPin },
+    { name: "Phone", value: "+91 9326169939", icon: Phone },
+    { name: "Education", value: "B.E Computer Science", icon: GraduationCap },
+    { name: "Experience", value: "3+ Internships", icon: Code }
+  ];
+
+  const FollowLinks = [
+    { name: "Github", icon: Github, url: "https://github.com", color: "hover:bg-gray-700" },
+    { name: "LinkedIn", icon: Linkedin, url: "https://linkedin.com", color: "hover:bg-blue-600" },
+    { name: "Twitter", icon: Twitter, url: "https://twitter.com", color: "hover:bg-sky-500" },
+    { name: "Email", icon: Mail, url: "mailto:utkarshtiwari1750@gmail.com", color: "hover:bg-red-500" }
+  ];
+
+  const skills = [
+    { name: "Web Development", percent: 95, color: "from-blue-500 to-cyan-500" },
+    { name: "Competitive Programming", percent: 85, color: "from-purple-500 to-pink-500" },
+    { name: "DevOps", percent: 70, color: "from-green-500 to-emerald-500" },
+    { name: "Database Management", percent: 90, color: "from-orange-500 to-red-500" }
+  ];
+
+  const CircularProgress = ({ percent, skill, index }) => {
+    const circumference = 2 * Math.PI * 45;
+    const strokeDashoffset = circumference - (percent / 100) * circumference;
+
+    return (
+      <motion.div
+        className="relative w-32 h-32 md:w-40 md:h-40"
+        initial={{ opacity: 0, scale: 0.8 }}
+        animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
+        transition={{ delay: index * 0.2, duration: 0.6 }}
+        onMouseEnter={() => setHoveredSkill(index)}
+        onMouseLeave={() => setHoveredSkill(null)}
+      >
+        <svg className="w-full h-full transform -rotate-90" viewBox="0 0 100 100">
+          {/* Background circle */}
+          <circle
+            cx="50"
+            cy="50"
+            r="45"
+            stroke="rgba(55, 65, 81, 0.3)"
+            strokeWidth="6"
+            fill="none"
+          />
+          {/* Progress circle */}
+          <motion.circle
+            cx="50"
+            cy="50"
+            r="45"
+            stroke={"url(#gradient-" + index + ")"}
+            strokeWidth="6"
+            fill="none"
+            strokeLinecap="round"
+            strokeDasharray={circumference}
+            initial={{ strokeDashoffset: circumference }}
+            animate={isInView ? { strokeDashoffset } : { strokeDashoffset: circumference }}
+            transition={{ delay: index * 0.2 + 0.5, duration: 1.5, ease: "easeOut" }}
+            style={{
+              filter: hoveredSkill === index ? 'drop-shadow(0 0 8px rgba(59, 130, 246, 0.5))' : 'none'
+            }}
+          />
+          {/* Gradient definition */}
+          <defs>
+            <linearGradient id={`gradient-${index}`} x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" className={`text-${skill.color.split('-')[1]}-500`} stopColor="currentColor" />
+              <stop offset="100%" className={`text-${skill.color.split('-')[3]}-500`} stopColor="currentColor" />
+            </linearGradient>
+          </defs>
+        </svg>
+        
+        {/* Center content */}
+        <div className="absolute inset-0 flex flex-col items-center justify-center">
+          <motion.span
+            className={`text-2xl md:text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r ${skill.color}`}
+            initial={{ opacity: 0 }}
+            animate={isInView ? { opacity: 1 } : { opacity: 0 }}
+            transition={{ delay: index * 0.2 + 1, duration: 0.6 }}
+          >
+            {percent}%
+          </motion.span>
+          <span className="text-xs md:text-sm text-gray-400 text-center mt-1 px-2">
+            {skill.name}
+          </span>
+        </div>
+      </motion.div>
+    );
+  };
+
   return (
-    <div
-      className="py-10 text-black
-            flex items-center"
-      id="About"
-    >
+    <div className="bg-black text-white min-h-screen py-16 px-4 relative overflow-hidden" id="About">
+      {/* Background Effects */}
+      <div className="absolute inset-0">
+        <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-gradient-to-r from-blue-600/10 to-purple-600/10 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-gradient-to-r from-cyan-500/10 to-blue-500/10 rounded-full blur-3xl"></div>
+      </div>
+
       <motion.div
         ref={ref}
-        initial={{ opacity: 0, y: 38 }}
-        animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 38 }}
-        transition={{ duration: 0.5 }}
-        className="flex flex-col lg:flex-row justify-between items-center gap-x-6 w-[1280px] mx-auto px-4 text-black relative py-9"
+        initial={{ opacity: 0, y: 50 }}
+        animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+        transition={{ duration: 0.8 }}
+        className="max-w-7xl mx-auto relative z-10"
       >
-        {/* Left */}
-        <div className="flex flex-col lg:gap-y-14 gap-y-6 lg:w-[35%] w-full">
-          <div>
-            <h2 className="lg:text-6xl font-bold text-4xl">About Me</h2>
-            <p className="text-slate-500">
-              I like creating a Innovative Project
-            </p>
-          </div>
-
-          <div className="flex items-center gap-x-7">
-            <motion.a
-              href={Resume}
-              whileHover={{ scale: 1.1 }}
-              transition={{ duration: 0.5 }}
-              className=" bg-gradient-to-r from-[#4800ff] to-[#f300ff] px-2 py-3 rounded-full 
-                            text-white flex items-center gap-x-2 cursor-pointer active:scale-50"
-              download="Utkarsh_Resume"
+        <div className="flex flex-col lg:flex-row gap-12 lg:gap-20 items-start">
+          
+          {/* Left Side */}
+          <div className="flex flex-col lg:w-2/5 w-full space-y-8">
+            {/* Header */}
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
+              transition={{ delay: 0.2, duration: 0.6 }}
             >
-              <PiDownloadSimpleBold size={20} />
-              Download Resume
-            </motion.a>
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-500 to-cyan-400">
+                  About
+                </span>{' '}
+                <span className="text-white">Me</span>
+              </h2>
+              <p className="text-gray-400 text-lg">
+                I like creating{' '}
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500 font-semibold">
+                  Innovative Projects
+                </span>
+              </p>
+            </motion.div>
 
-            <div className="flex gap-x-2 items-center">
-              {FollowLinks.map((link, index) => {
-                const Icon = Icons[link.icon];
-                return (
-                  <a
-                    key={index}
-                    href={link.url}
-                    className={`${
-                      link.name == "LinkedIn"
-                        ? "hover:bg-[#5e8ff2]"
-                        : link.name == "X"
-                        ? "hover:bg-[#5e8ff2]"
-                        : ""
-                    } text-white text-xl p-2 rounded-full  hover:scale-[0.85] bg-black  transition-all duration-300`}
-                    target="_blank"
-                  >
-                    <Icon />
-                  </a>
-                );
-              })}
-            </div>
+            {/* Download Resume & Social Links */}
+            <motion.div
+              className="flex flex-col sm:flex-row items-start sm:items-center gap-6"
+              initial={{ opacity: 0, y: 30 }}
+              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+              transition={{ delay: 0.4, duration: 0.6 }}
+            >
+              <motion.button
+                className="group relative px-6 py-3 bg-gradient-to-r from-purple-600 to-blue-600 text-white font-semibold rounded-full overflow-hidden transition-all duration-300 hover:from-purple-500 hover:to-blue-500 hover:scale-105 hover:shadow-lg hover:shadow-purple-500/25"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <span className="relative z-10 flex items-center gap-2">
+                  <Download className="w-4 h-4" />
+                  Download Resume
+                </span>
+                <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              </motion.button>
+
+              <div className="flex gap-3">
+                {FollowLinks.map((link, index) => {
+                  const Icon = link.icon;
+                  return (
+                    <motion.a
+                      key={index}
+                      href={link.url}
+                      className={`p-3 bg-gray-800 text-gray-400 hover:text-white rounded-full transition-all duration-300 ${link.color} hover:scale-110 hover:shadow-lg`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      whileHover={{ y: -2 }}
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                      transition={{ delay: 0.6 + index * 0.1, duration: 0.4 }}
+                    >
+                      <Icon className="w-5 h-5" />
+                    </motion.a>
+                  );
+                })}
+              </div>
+            </motion.div>
+
+            {/* Info Table */}
+            <motion.div
+              className="bg-gray-900/50 backdrop-blur-sm rounded-2xl border border-gray-800 p-6"
+              initial={{ opacity: 0, y: 30 }}
+              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+              transition={{ delay: 0.8, duration: 0.6 }}
+            >
+              <div className="space-y-3">
+                {AboutInfo.map((info, index) => {
+                  const Icon = info.icon;
+                  return (
+                    <motion.div
+                      key={index}
+                      className="flex items-center gap-4 p-3 rounded-lg bg-gray-800/30 hover:bg-gray-800/50 transition-colors"
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
+                      transition={{ delay: 1 + index * 0.1, duration: 0.4 }}
+                    >
+                      <Icon className="w-5 h-5 text-blue-400 flex-shrink-0" />
+                      <div className="flex flex-col sm:flex-row sm:justify-between w-full">
+                        <span className="text-gray-400 font-medium">{info.name}:</span>
+                        <span className="text-white">{info.value}</span>
+                      </div>
+                    </motion.div>
+                  );
+                })}
+              </div>
+            </motion.div>
           </div>
 
-          <table className="w-[55%] mx-auto lg:w-full">
-            <tbody className="w-full">
-              {AboutInfo.map((info, index) => (
-                <tr
-                  key={index}
-                  className={`${
-                    index % 2 == 0 ? "bg-slate-100" : "bg-white"
-                  } bg-black rounded-xl w-full font-bold md:text-base text-sm`}
-                >
-                  <td className="lg:p-5 rounded-l-lg p-3 w-full">
-                    {info.name}:
-                  </td>
-                  <td className="lg:p-5 rounded-r-lg lg:pl-6 p-3 w-full">
-                    {info.value}
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-
-        {/* Right */}
-        <div className="lg:w-[50%] w-full pl-4 pr-10 lg:pl-0 lg:pr-0 text-justify flex flex-col lg:items-start gap-y-4 mt-5 lg:mt-0">
-          <p className="text-justify text-slate-500">
-            Hi! I&apos;m Utkarsh Tiwari, a Computer Science Engineering student
-            with a versatile tech background in Web Development, DevOps, and
-            data science. My expertise includes Next JS, Firebase, Python, React
-            JS, and C++.
-          </p>
-
-          <div className="grid grid-cols-2 gap-y-5 gap-x-28 p-3 relative place-items-center pl-8 w-">
-            <div className="relative md:w-[160px] w-[120px] inline-block mr-[10px]">
-              <Progress.Circle
-                percent={80}
-                className="font-extrabold"
-                showInfo={false}
-                strokeColor="#1F51FF"
-              />
-
-              <div className="absolute flex flex-col items-center justify-center md:top-[28%] top-[24%] md:left-10 left-6 w-20">
-                <p className="md:text-3xl text-xl font-bold w-12">{80}%</p>
-                <p className="w-20 text-center text-xs md:text-sm ">
-                  Web Development
+          {/* Right Side */}
+          <div className="lg:w-3/5 w-full space-y-8">
+            {/* Description */}
+            <motion.div
+              className="space-y-4"
+              initial={{ opacity: 0, x: 50 }}
+              animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
+              transition={{ delay: 0.6, duration: 0.8 }}
+            >
+              <div className="relative">
+                <div className="absolute left-0 top-0 w-1 h-full bg-gradient-to-b from-cyan-400 to-blue-600 rounded-full"></div>
+                <p className="text-gray-300 text-lg leading-relaxed pl-6">
+                  Hi! I'm{' '}
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500 font-semibold">
+                    Utkarsh Tiwari
+                  </span>
+                  , a Computer Science Engineering student with a versatile tech background in Web Development, DevOps, and data science. My expertise includes Next.js, Firebase, Python, React.js, and C++.
                 </p>
               </div>
-            </div>
+              
+              <p className="text-gray-400 text-base leading-relaxed pl-6">
+                I'm passionate about building scalable solutions and have gained hands-on experience through multiple internships at startups, where I've contributed to high-performance web applications and microservices architecture.
+              </p>
+            </motion.div>
 
-            <div className="relative md:w-[160px] w-[120px] inline-block mr-[10px]">
-              <Progress.Circle
-                percent={75}
-                className="font-extrabold"
-                showInfo={false}
-                strokeColor="#1F51FF"
-              />
-
-              <div className="absolute flex flex-col items-center justify-center md:top-[28%] top-[24%] md:left-10 left-6 w-20">
-                <p className="md:text-3xl text-xl font-bold w-12">{75}%</p>
-                <p className="w-20 text-center text-xs md:text-sm ">
-                  Competitive Programming
-                </p>
+            {/* Skills Section */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+              transition={{ delay: 1, duration: 0.8 }}
+            >
+              <h3 className="text-2xl font-bold mb-8 text-center">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-500">
+                  My Expertise
+                </span>
+              </h3>
+              
+              <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 place-items-center">
+                {skills.map((skill, index) => (
+                  <CircularProgress
+                    key={index}
+                    percent={skill.percent}
+                    skill={skill}
+                    index={index}
+                  />
+                ))}
               </div>
-            </div>
-
-            <div className="relative md:w-[160px] w-[120px] inline-block mr-[10px]">
-              <Progress.Circle
-                percent={50}
-                className="font-extrabold"
-                showInfo={false}
-                strokeColor="#1F51FF"
-              />
-
-              <div className="absolute flex flex-col items-center justify-center top-[28%] md:left-10 left-6 w-20">
-                <p className="md:text-3xl text-xl font-bold w-12">{50}%</p>
-                <p className="w-20 text-center text-xs md:text-sm ">Devops</p>
-              </div>
-            </div>
-
-            <div className="relative md:w-[160px] w-[120px] inline-block mr-[10px]">
-              <Progress.Circle
-                percent={85}
-                className="font-extrabold"
-                showInfo={false}
-                strokeColor="#1F51FF"
-              />
-
-              <div className="absolute flex flex-col items-center justify-center md:top-[28%] top-[24%] md:left-10 left-6 w-20">
-                <p className="md:text-3xl text-xl font-bold w-12">{85}%</p>
-                <p className="w-20 text-center text-xs md:text-sm ">
-                  Database Management
-                </p>
-              </div>
-            </div>
+            </motion.div>
           </div>
         </div>
       </motion.div>
     </div>
   );
-}
+};
+
+export default About;
