@@ -10,6 +10,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import rootReducer from "@/reducer";
 import { Toaster } from "sonner";
 import dynamic from "next/dynamic";
+import WorkExperience from "@/components/Work";
 const Hero = dynamic(() => import("@/components/Hero"), {
   ssr: false,
 });
@@ -28,6 +29,7 @@ export default function Home() {
           </div>
 
           <Hero />
+          <WorkExperience />
           <About />
           <Skills />
           <Projects />
