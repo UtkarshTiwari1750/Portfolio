@@ -1,32 +1,19 @@
 "use client";
 import React, { useEffect, useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import { Github, Linkedin, Mail, Twitter, ExternalLink } from "lucide-react";
-import { TypeAnimation } from "react-type-animation";
+import { ExternalLink } from "lucide-react";
 import Link from "next/link";
 import { useDispatch } from "react-redux";
 import { setCurrSection } from "@/slices/navSlice";
+import AnimatedBackground from "./AnimatedBackground";
+import SocialLinks from "./SocialLinks";
+import dynamic from "next/dynamic";
 
-// Mock data for social links
-const FollowLinks = [
-  { icon: "Github", url: "https://github.com/UtkarshTiwari1750" },
-  {
-    icon: "Linkedin",
-    url: "https://www.linkedin.com/in/utkarsh-tiwari-1a4b91256",
-  },
-  { icon: "Twitter", url: "https://x.com/utkarsh1750" },
-  { icon: "Mail", url: "mailto:utkarshtiwari1750@gmail.com" },
-];
+const TypingTitle = dynamic(() => import("@/components/Hero/TypingTitle.jsx"), {
+  ssr: false,
+});
 
-const Icons = {
-  Github,
-  Linkedin,
-  Twitter,
-  Mail,
-  ExternalLink,
-};
-
-const PortfolioHero = () => {
+const Hero = () => {
   const ref = useRef(null);
   const dispatch = useDispatch();
   const isInView = useInView(ref, { amount: 0.25 });
@@ -42,12 +29,7 @@ const PortfolioHero = () => {
       id="Home"
     >
       {/* Animated Background Elements */}
-      <div className="absolute inset-0">
-        {/* Gradient Orbs */}
-        <div className="absolute top-20 left-20 w-72 h-72 bg-gradient-to-r from-blue-600/20 to-purple-600/20 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-32 right-20 w-96 h-96 bg-gradient-to-r from-cyan-500/15 to-blue-500/15 rounded-full blur-3xl animate-pulse delay-1000"></div>
-      </div>
-
+      <AnimatedBackground />
       {/* Geometric SVG */}
       <motion.svg
         xmlns="http://www.w3.org/2000/svg"
@@ -84,33 +66,9 @@ const PortfolioHero = () => {
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="text-white w-full max-w-4xl"
         >
-          
           {/* Typing Animation */}
-          <motion.div
-            className="h-10"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.3, duration: 0.6 }}
-          >
-            <TypeAnimation
-              sequence={[
-                "Software Engineer",
-                2000,
-                "Full-Stack Web Developer",
-                2000,
-                "C++ Developer",
-                2000,
-                "Problem Solver",
-                2000,
-              ]}
-              className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 text-lg md:text-2xl lg:text-3xl font-medium tracking-wider uppercase"
-              cursor={false}
-              speed={50}
-              style={{ whiteSpace: "pre-line" }}
-              repeat={Infinity}
-            />
-          </motion.div>
-          
+          <TypingTitle />
+
           {/* Main Heading */}
           <motion.h1
             className="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight mb-8"
@@ -129,7 +87,7 @@ const PortfolioHero = () => {
             </span>
             <span className="text-cyan-400">.</span>
           </motion.h1>
-          
+
           {/* Description */}
           <motion.div
             className="relative"
@@ -170,34 +128,7 @@ const PortfolioHero = () => {
         </motion.div>
 
         {/* Social Links */}
-        <motion.div
-          className="flex flex-col gap-4 pr-4"
-          initial={{ opacity: 0, x: 50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ delay: 1.0, duration: 0.8 }}
-        >
-          {FollowLinks.map((link, index) => {
-            const Icon = Icons[link.icon];
-            return (
-              <motion.a
-                key={index}
-                href={link.url}
-                className="group relative p-4 text-gray-400 hover:text-white transition-all duration-300"
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.95 }}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 1.2 + index * 0.1, duration: 0.5 }}
-              >
-                <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-purple-600/20 rounded-full scale-0 group-hover:scale-100 transition-transform duration-300"></div>
-                <div className="absolute inset-0 bg-gradient-to-r from-cyan-400/10 to-blue-500/10 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                <Icon className="relative z-10 w-6 h-6" />
-              </motion.a>
-            );
-          })}
-        </motion.div>
+        <SocialLinks />
       </div>
 
       {/* Scroll Indicator */}
@@ -223,4 +154,4 @@ const PortfolioHero = () => {
   );
 };
 
-export default PortfolioHero;
+export default Hero;
