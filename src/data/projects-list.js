@@ -1,3 +1,4 @@
+import DailyBasket from "@/assest/DailyBasket.png"
 import Septron from "@/assest/Septron.png"
 import StudyNotion from "@/assest/StudyNotion.png"
 import GIFGenerator from "@/assest/GIFGenerator.png"
@@ -7,6 +8,32 @@ import PasswordGenerator from "@/assest/PasswordGenerator.jpg"
 export const ProjectList = [
     {
         projectNo: '1',
+        title: "DailyBasket",
+        description: `DailyBasket is a full-featured grocery shopping app built with React Native and Expo. It supports authentication, cart, and product management with 10K+ items, backed by optimized DB indexing and a caching layer that cut query latency by 35%.`,
+        image: DailyBasket,
+        url: false,
+        githubUrl: "https://github.com/UtkarshTiwari1750",
+        techStack:[
+            {
+                iconName: "SiReact",
+                iconColor: "#00D1F7"
+            },
+            {
+                iconName: "SiExpo",
+                iconColor: "#FFFFFF"
+            },
+            {
+                iconName: "SiTypescript",
+                iconColor: "#1573C1"
+            },
+            {
+                iconName: "SiMysql",
+                iconColor: "#015E86"
+            },
+        ]
+    },
+    {
+        projectNo: '2',
         title: "Septron",
         description: `Septron is a fully functional entertainment platform that enables users to create, consume, and rate content. The platform is built using the MERN stack and Firebase, which includes ReactJS, NodeJS, MongoDB, and ExpressJS.`,
         image: Septron,
@@ -52,7 +79,7 @@ export const ProjectList = [
         ] 
     },
     {
-        projectNo: '2',
+        projectNo: '3',
         title: "StudyNotion",
         description: `StudyNotion is a fully functional ed-tech platform that enables users to create, consume, and rate educational content.
         The platform is built using the MERN stack, which includes ReactJS, NodeJS, MongoDB, and ExpressJS.`,
@@ -95,7 +122,7 @@ export const ProjectList = [
         ] 
     },
     {
-        projectNo: '3',
+        projectNo: '4',
         title: "GIF Generator",
         description: "Created a GIF generator website that suggests a random GIF or provides a GIF based on the user's input.",
         image: GIFGenerator,
@@ -125,7 +152,7 @@ export const ProjectList = [
         ] 
     },
     {
-        projectNo: '4',
+        projectNo: '5',
         title: "Password Generator",
         description: `Created an interactive and responsive Password Generator that generates new and random passwords based on user input,  including desired length and character set, and indicates password strength.`,
         image: PasswordGenerator,

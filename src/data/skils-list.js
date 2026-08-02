@@ -24,11 +24,50 @@ export const SkillsList = [
                 ]
             },
             {
+                name:"Typescript&Javascript",
+                image: [
+                    {
+                        iconName: "SiTypescript",
+                        iconColor: "#1573C1"
+                    },
+                    {
+                        iconName: "SiJavascript",
+                        iconColor: "#ECDA1D"
+                    },
+                ]
+            },
+            {
+                name:"C++&Java",
+                image: [
+                    {
+                        iconName: "SiCplusplus",
+                        iconColor: "#00599C"
+                    },
+                    {
+                        iconName: "SiOpenjdk",
+                        iconColor: "#ED8B00"
+                    },
+                ]
+            },
+            {
                 name:"NextJS",
-                image:[ 
+                image:[
                     {
                         iconName: "SiNextdotjs",
                         iconColor: "#000000"
+                    },
+                ]
+            },
+            {
+                name:"SpringBoot&RabbitMQ",
+                image: [
+                    {
+                        iconName: "SiSpringboot",
+                        iconColor: "#6DB33F"
+                    },
+                    {
+                        iconName: "SiRabbitmq",
+                        iconColor: "#FF6600"
                     },
                 ]
             },
@@ -42,8 +81,60 @@ export const SkillsList = [
                 ]
             },
             {
+                name:"Prisma&Drizzle",
+                image: [
+                    {
+                        iconName: "SiPrisma",
+                        iconColor: "#2D3748"
+                    },
+                    {
+                        iconName: "SiDrizzle",
+                        iconColor: "#C5F74F"
+                    },
+                ]
+            },
+            {
+                name:"Databases",
+                image: [
+                    {
+                        iconName: "SiMysql",
+                        iconColor: "#015E86"
+                    },
+                    {
+                        iconName: "SiPostgresql",
+                        iconColor: "#336791"
+                    },
+                    {
+                        iconName: "SiSqlite",
+                        iconColor: "#003B57"
+                    },
+                ]
+            },
+            {
+                name:"Redis",
+                image: [
+                    {
+                        iconName: "SiRedis",
+                        iconColor: "#DC382D"
+                    },
+                ]
+            },
+            {
+                name:"React Native",
+                image: [
+                    {
+                        iconName: "SiReact",
+                        iconColor: "#00D1F7"
+                    },
+                    {
+                        iconName: "SiExpo",
+                        iconColor: "#FFFFFF"
+                    },
+                ]
+            },
+            {
                 name:"Docker",
-                image:[ 
+                image:[
                     {
                         iconName: "SiDocker",
                         iconColor: "#1D63ED"
@@ -51,6 +142,19 @@ export const SkillsList = [
                     {
                         iconName: "SiKubernetes",
                         iconColor: "#3069DE"
+                    },
+                ]
+            },
+            {
+                name:"Nginx&GCP",
+                image: [
+                    {
+                        iconName: "SiNginx",
+                        iconColor: "#009639"
+                    },
+                    {
+                        iconName: "SiGooglecloud",
+                        iconColor: "#4285F4"
                     },
                 ]
             },
@@ -140,6 +244,24 @@ export const SkillsList = [
                 ]
             },
             {
+                name:"SpringBoot",
+                image:[
+                    {
+                        iconName: "SiSpringboot",
+                        iconColor: "#6DB33F"
+                    },
+                ]
+            },
+            {
+                name:"RabbitMQ",
+                image:[
+                    {
+                        iconName: "SiRabbitmq",
+                        iconColor: "#FF6600"
+                    },
+                ]
+            },
+            {
                 name:"Firebase",
                 image: [
                     {
@@ -167,11 +289,55 @@ export const SkillsList = [
                 ]
             },
             {
-                name:"MySQL",
+                name:"Prisma",
                 image: [
                     {
-                        iconName: "SiMysql",
-                        iconColor: "#015E86"
+                        iconName: "SiPrisma",
+                        iconColor: "#2D3748"
+                    },
+                ]
+            },
+            {
+                name:"Drizzle",
+                image: [
+                    {
+                        iconName: "SiDrizzle",
+                        iconColor: "#C5F74F"
+                    },
+                ]
+            },
+            {
+                name:"Zustand & Valtio",
+                image: []
+            },
+            {
+                name:"Tanstack",
+                image: [
+                    {
+                        iconName: "SiReactquery",
+                        iconColor: "#FF4154"
+                    },
+                ]
+            },
+            {
+                name:"Nginx",
+                image: [
+                    {
+                        iconName: "SiNginx",
+                        iconColor: "#009639"
+                    },
+                ]
+            },
+            {
+                name:"Git/GitHub",
+                image: [
+                    {
+                        iconName: "SiGit",
+                        iconColor: "#F1502F"
+                    },
+                    {
+                        iconName: "SiGithub",
+                        iconColor: "#FFFFFF"
                     },
                 ]
             },
@@ -188,11 +354,86 @@ export const SkillsList = [
     },
 
     {
+        Name: "Databases",
+        Skills: [
+            {
+                name:"MySQL",
+                image: [
+                    {
+                        iconName: "SiMysql",
+                        iconColor: "#015E86"
+                    },
+                ]
+            },
+            {
+                name:"PostgreSQL",
+                image: [
+                    {
+                        iconName: "SiPostgresql",
+                        iconColor: "#336791"
+                    },
+                ]
+            },
+            {
+                name:"SQLite",
+                image: [
+                    {
+                        iconName: "SiSqlite",
+                        iconColor: "#003B57"
+                    },
+                ]
+            },
+            {
+                name:"MongoDB",
+                image: [
+                    {
+                        iconName: "SiMongodb",
+                        iconColor: "#00ED64"
+                    },
+                ]
+            },
+            {
+                name:"Redis",
+                image: [
+                    {
+                        iconName: "SiRedis",
+                        iconColor: "#DC382D"
+                    },
+                ]
+            },
+        ]
+    },
+
+    {
+        Name: "Mobile",
+        Skills: [
+            {
+                name:"React Native",
+                image: [
+                    {
+                        iconName: "SiReact",
+                        iconColor: "#00D1F7"
+                    },
+                ]
+            },
+            {
+                name:"Expo",
+                image: [
+                    {
+                        iconName: "SiExpo",
+                        iconColor: "#FFFFFF"
+                    },
+                ]
+            },
+        ]
+    },
+
+    {
         Name: "Devops",
         Skills: [
             {
                 name:"Docker",
-                image:[ 
+                image:[
                     {
                         iconName: "SiDocker",
                         iconColor: "#1D63ED"
@@ -205,6 +446,24 @@ export const SkillsList = [
                     {
                         iconName: "SiKubernetes",
                         iconColor: "#3069DE"
+                    },
+                ]
+            },
+            {
+                name:"Nginx",
+                image: [
+                    {
+                        iconName: "SiNginx",
+                        iconColor: "#009639"
+                    },
+                ]
+            },
+            {
+                name:"GCP",
+                image: [
+                    {
+                        iconName: "SiGooglecloud",
+                        iconColor: "#4285F4"
                     },
                 ]
             },
@@ -263,23 +522,4 @@ export const SkillsList = [
 
         ]
     },
-
-
-    // {
-    //     "Name": 'Web-Development',
-    //     "Languages": ['Typescript', 'Javascript', 'HTML', 'CSS', "MySQL"],
-    //     "Developer Tools": ['VS Code', 'Docker', 'Git', 'Git-Hub' , "Postman"],
-    //     "Libraries/Frameworks": ["Next.Js", "Firebase", "React.JS", "NodeJS", 
-    //         "ExpressJS", "MongoDB", "TailwindCSS","Redux", "OAuth"]
-    // },
-    // {
-    //     Name: "Devops",
-    //     Tools: ["Docker", "Kubernetes"],
-    // },
-    // {
-    //     Name: "Machine Learning",
-    //     "Languages": ["Python"],
-    //     "Developer Tools": ['VS Code', "Anaconda", "Jupyter Notebook"],
-    //     "Libraries/Frameworks": ["Numpy", "Pandas", "Matplotlib"]
-    // }
 ]

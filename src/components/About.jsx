@@ -7,7 +7,7 @@ import * as Icons from "react-icons/fa";
 import { PiDownloadSimpleBold } from "react-icons/pi";
 import { motion, useInView } from "framer-motion";
 import { useEffect, useRef } from "react";
-import Resume from "../data/Resume.pdf";
+import { RESUME_LINK } from "@/data/resume-link";
 import { useDispatch } from "react-redux";
 import { setCurrSection } from "@/slices/navSlice";
 
@@ -44,12 +44,13 @@ export default function About() {
 
           <div className="flex items-center gap-x-7">
             <motion.a
-              href={Resume}
+              href={RESUME_LINK}
+              target="_blank"
+              rel="noopener noreferrer"
               whileHover={{ scale: 1.1 }}
               transition={{ duration: 0.5 }}
-              className=" bg-gradient-to-r from-[#4800ff] to-[#f300ff] px-2 py-3 rounded-full 
+              className=" bg-gradient-to-r from-[#4800ff] to-[#f300ff] px-2 py-3 rounded-full
                             text-white flex items-center gap-x-2 cursor-pointer active:scale-50"
-              download="Utkarsh_Resume"
             >
               <PiDownloadSimpleBold size={20} />
               Download Resume
@@ -102,10 +103,11 @@ export default function About() {
         {/* Right */}
         <div className="lg:w-[50%] w-full pl-4 pr-10 lg:pl-0 lg:pr-0 text-justify flex flex-col lg:items-start gap-y-4 mt-5 lg:mt-0">
           <p className="text-justify text-slate-500">
-            Hi! I&apos;m Utkarsh Tiwari, a Computer Science Engineering student
-            with a versatile tech background in Web Development, DevOps, and
-            data science. My expertise includes Next JS, Firebase, Python, React
-            JS, and C++.
+            Hi! I&apos;m Utkarsh Tiwari, a Software Development Engineer at
+            Adizen.ai with a versatile full-stack background spanning Web
+            Development, Mobile (React Native), and DevOps. My expertise
+            includes Next.js, Node.js/Express, React, React Native, Firebase,
+            Prisma/PostgreSQL, Python, and C++.
           </p>
 
           <div className="grid grid-cols-2 gap-y-5 gap-x-28 p-3 relative place-items-center pl-8 w-">
